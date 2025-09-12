@@ -4,10 +4,10 @@ function Baner() {
   return (
     <div
       className="h-[20vh] min-h-85 md:h-[80vh] bg-cover bg-center flex items-end"
-      style={{ backgroundImage: `url('src/components/images/image1.png')` }}
+      style={{ backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLefYrEddswwVTGf_9r3fVQ5c56AZaf_ORfA&s')` }}
     >
       <div className="text-white font-bold text-xl w-full text-center bg-gray-900/70 p-1">
-        X-Men
+        IRONHEART
       </div>
     </div>
   );
