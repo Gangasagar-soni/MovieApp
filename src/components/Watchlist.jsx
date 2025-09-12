@@ -3,6 +3,15 @@ import React from "react";
 function Watchlist() {
   return (
     <>
+
+    <div className="flex justify-center flex-wrap m-4 gap-7">
+      <div className="w-[80px] h-[30px] text-center text-[13px] bg-blue-400 rounded-lg pb-[3px] text-white font-bold p-[3px] ">Action</div>
+
+      <div className="w-[80px] h-[30px] text-center text-[13px] bg-gray-400 rounded-lg pb-[3px] text-white font-bold p-[3px]">Action</div>
+
+      <div className="w-[80px] h-[30-px] text-center text-[13px] bg-blue-400 rounded-lg pb-[3px] text-white font-bold p-[3px]">Action</div>
+    </div>
+
       <div className="flex justify-center my-4">
         <input
           type="text"
