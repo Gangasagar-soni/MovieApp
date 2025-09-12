@@ -2,18 +2,30 @@ import { useState } from "react";
 import React, { useEffect } from "react";
 import MovieCard from "./MovieCard";
 import axios from "axios";
+import Pagination from "./pagination";
 
 function Movie() {
+   const[page, setpage]=useState(1);
   const [movies, setmovies] = useState([]);
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=09d63397f15c343e9edcc1901173728c&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/popular?api_key=09d63397f15c343e9edcc1901173728c&language=en-US&page=${page}`
       )
       .then(function (res) {
         setmovies(res.data.results);
       });
-  }, []);
+  }, [page]);
+
+function increasePage(){
+  setpage(page+1)
+}
+function decreasePage(){
+  if(page>1){
+  setpage(page-1)
+  }
+}
+
 
   return (
     <div className="pt-2 p-5">
@@ -30,6 +42,7 @@ function Movie() {
           );
         })}
       </div>
+      <Pagination increasePage={increasePage} decreasePage={decreasePage} page={page}/>
     </div>
   );
 }
