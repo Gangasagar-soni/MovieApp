@@ -4,8 +4,8 @@ import MovieCard from "./MovieCard";
 import axios from "axios";
 import Pagination from "./pagination";
 
-function Movie() {
-   const[page, setpage]=useState(1);
+function Movie({ handleAddtoWatchlist, handleRemovefromWatchlist, watchlist }) {
+  const [page, setpage] = useState(1);
   const [movies, setmovies] = useState([]);
   useEffect(() => {
     axios
@@ -17,15 +17,14 @@ function Movie() {
       });
   }, [page]);
 
-function increasePage(){
-  setpage(page+1)
-}
-function decreasePage(){
-  if(page>1){
-  setpage(page-1)
+  function increasePage() {
+    setpage(page + 1);
   }
-}
-
+  function decreasePage() {
+    if (page > 1) {
+      setpage(page - 1);
+    }
+  }
 
   return (
     <div className="pt-2 p-5">
@@ -36,13 +35,22 @@ function decreasePage(){
         {movies.map((movieObj) => {
           return (
             <MovieCard
+              movieObj={movieObj}
               poster_path={movieObj.poster_path}
               name={movieObj.original_title}
+              key={movieObj.id}
+              handleAddtoWatchlist={handleAddtoWatchlist}
+              handleRemovefromWatchlist={handleRemovefromWatchlist}
+              watchlist={watchlist}
             />
           );
         })}
       </div>
-      <Pagination increasePage={increasePage} decreasePage={decreasePage} page={page}/>
+      <Pagination
+        increasePage={increasePage}
+        decreasePage={decreasePage}
+        page={page}
+      />
     </div>
   );
 }

@@ -49,23 +49,6 @@ function Watchlist() {
                 <button className="text-red-400">Delete</button>
               </td>
             </tr>
-             <tr className="border-b-2">
-              <td className="flex justify-center px-2 py-2 border-r-[1px] border-gray-100">
-                <img
-                  src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7nBEVZmWDx9Im498FRmg-0Y0eg2QyuT1LIQ&s`}
-                  className={"w-[70px] h-[50px]"}
-                />
-              </td>
-              <td className="border-r-[1px] border-gray-100">
-                <div className="m-3 text-[11px] font-bold">Alien: ROMULUS</div>
-              </td>
-              <td className="border-r-[1px] border-gray-100">5.4</td>
-              <td className="border-r-[1px] border-gray-100">6.7</td>
-              <td className="border-r-[1px] border-gray-100">Action</td>
-              <td className="font-red">
-                <button className="text-red-400">Delete</button>
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>
