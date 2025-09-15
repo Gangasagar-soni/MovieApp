@@ -33,7 +33,7 @@ function MovieCard({
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
-            fill="currentColor"
+            fill="red"
             className="size-6 absolute top-0 right-0 size-6"
           >
             <path
