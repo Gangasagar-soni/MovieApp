@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import genreids from'./Utility/Genre.js'
 
-function Watchlist({ watchlist, setWatchlist }) {
+function Watchlist({ watchlist, setWatchlist, handleRemovefromWatchlist }) {
   const [search, setsearch] = useState("");
-
+  const [GenreList, setGenreList] = useState('All Genres');
   let handleSearch = (e) => {
     setsearch(e.target.value);
   };
@@ -24,20 +25,27 @@ function Watchlist({ watchlist, setWatchlist }) {
 
   useEffect(()=>{
   },[watchlist])
+
+  useEffect(()=>{
+  let temp = watchlist.map((movieObj)=>{
+    return genreids[movieObj.genre_ids[0]]
+  })
+  setGenreList(['All Genres',...temp])
+  console.log(temp)
+  },[watchlist])
+  
   return (
     <>
       <div className="flex justify-center flex-wrap m-4 gap-7">
         <div className="w-[80px] h-[30px] text-center text-[13px] bg-blue-400 rounded-lg pb-[3px] text-white font-bold p-[3px] ">
-          Action
+          {GenreList.map((genre)=>{
+            return<div className="w-[80px] h-[30px] text-center text-[13px] bg-gray-400 rounded-lg pb-[3px] text-white font-bold p-[3px]">
+          {genre}
+        </div> 
+          })}
+          
         </div>
 
-        <div className="w-[80px] h-[30px] text-center text-[13px] bg-gray-400 rounded-lg pb-[3px] text-white font-bold p-[3px]">
-          Action
-        </div>
-
-        <div className="w-[80px] h-[30-px] text-center text-[13px] bg-blue-400 rounded-lg pb-[3px] text-white font-bold p-[3px]">
-          Action
-        </div>
       </div>
 
       <div className="flex justify-center my-4">
@@ -128,9 +136,9 @@ function Watchlist({ watchlist, setWatchlist }) {
                     <td className="border-r-[1px] border-gray-100">
                       {movieObj.vote_average}
                     </td>
-                    <td className="border-r-[1px] border-gray-100">Thriller</td>
-                    <td className="font-red">
-                      <button className="text-red-400">Delete</button>
+                    <td className="border-r-[1px] border-gray-100">{genreids[movieObj.genre_ids[0]]}</td>
+                    <td onClick={()=>{handleRemovefromWatchlist(movieObj)}} className="font-red">
+                      <button className="text-red-400" >Delete</button>
                     </td>
                   </tr>
                 );

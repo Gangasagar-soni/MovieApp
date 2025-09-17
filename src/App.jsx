@@ -53,7 +53,9 @@ function App() {
               </>
             }
           />
-          <Route path="/Watchlist" element={<Watchlist watchlist={watchlist} setWatchlist={setWatchlist}/>} />
+          <Route path="/Watchlist" element={<Watchlist watchlist={watchlist} setWatchlist={setWatchlist}npm run dev
+          
+          handleRemovefromWatchlist={handleRemovefromWatchlist}/>} />
         </Routes>
       </BrowserRouter>
     </>
