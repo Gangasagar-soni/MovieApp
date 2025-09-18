@@ -3,50 +3,50 @@ import genreids from'./Utility/Genre.js'
 
 function Watchlist({ watchlist, setWatchlist, handleRemovefromWatchlist }) {
   const [search, setsearch] = useState("");
-  const [GenreList, setGenreList] = useState('All Genres');
+  const [genreList, setgenreList]=useState(['All genres'])
+  const [currgenre, setcurrgenre]=useState('All genres')
   let handleSearch = (e) => {
     setsearch(e.target.value);
   };
 
-  let ShortIncresing=()=>{
-    let ShortIncresing=watchlist.sort((movieA, movieB)=>{
-      return movieB.vote_average-movieA.vote_average
-    })
-    setWatchlist([...ShortIncresing])
+  let handleFilter=(genre)=>{
+    setcurrgenre(genre)
   }
 
-  let ShortDecresing=()=>{
-      let ShortDecresing= watchlist.sort((movieA, movieB)=>{
-      return movieA.vote_average-movieB.vote_average
-    })
+let ShortIncresing = () => {
+  let sorted = [...watchlist].sort((a, b) => b.vote_average - a.vote_average);
+  setWatchlist(sorted);
+};
 
-      setWatchlist([...ShortDecresing])
-  }
-
+let ShortDecresing = () => {
+  let sorted = [...watchlist].sort((a, b) => a.vote_average - b.vote_average);
+  setWatchlist(sorted);
+};
   useEffect(()=>{
   },[watchlist])
 
-  useEffect(()=>{
-  let temp = watchlist.map((movieObj)=>{
-    return genreids[movieObj.genre_ids[0]]
-  })
-  setGenreList(['All Genres',...temp])
-  console.log(temp)
-  },[watchlist])
-  
+ useEffect(() => {
+  let temp = watchlist.map((movieObj) => genreids[movieObj.genre_ids[0]]);
+  let uniqueGenres = ["All genres", ...new Set(temp)];
+  setgenreList(uniqueGenres);
+}, [watchlist]);
   return (
     <>
-      <div className="flex justify-center flex-wrap m-4 gap-7">
-        <div className="w-[80px] h-[30px] text-center text-[13px] bg-blue-400 rounded-lg pb-[3px] text-white font-bold p-[3px] ">
-          {GenreList.map((genre)=>{
-            return<div className="w-[80px] h-[30px] text-center text-[13px] bg-gray-400 rounded-lg pb-[3px] text-white font-bold p-[3px]">
-          {genre}
-        </div> 
-          })}
-          
-        </div>
-
-      </div>
+    <div className="flex justify-center flex-wrap m-4 gap-7">
+  {genreList.map((genre) => (
+    <div
+      key={genre}
+      onClick={() => handleFilter(genre)}
+      className={
+        currgenre === genre
+          ? "px-4 py-2 min-w-max flex items-center justify-center bg-blue-500 rounded-lg text-white font-bold text-sm cursor-pointer"
+          : "px-4 py-2 min-w-max flex items-center justify-center bg-gray-400 rounded-lg text-white font-bold text-sm cursor-pointer"
+      }
+    >
+      {genre}
+    </div>
+  ))}
+</div>
 
       <div className="flex justify-center my-4">
         <input
