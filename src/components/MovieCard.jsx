@@ -18,11 +18,11 @@ function MovieCard({
     
   }
   return (
-    <div
-      className="h-[40vh] w-[140px] bg-center bg-cover rounded-xl mb-4 hover:scale-110 duration-300 hover:curser-pointer flex items-end"
-      style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
-      }}
+  <div
+  className="relative h-[40vh] w-[140px] bg-center bg-cover rounded-xl mb-4 hover:scale-110 duration-300 hover:cursor-pointer flex items-end"
+  style={{
+    backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
+  }}
     >
       {doesContain(movieObj) ? (
         <div
