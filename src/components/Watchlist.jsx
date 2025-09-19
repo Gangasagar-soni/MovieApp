@@ -1,52 +1,51 @@
 import React, { useEffect, useState } from "react";
-import genreids from'./Utility/Genre.js'
+import genreids from "./Utility/Genre.js";
 
 function Watchlist({ watchlist, setWatchlist, handleRemovefromWatchlist }) {
   const [search, setsearch] = useState("");
-  const [genreList, setgenreList]=useState(['All genres'])
-  const [currgenre, setcurrgenre]=useState('All genres')
+  const [genreList, setgenreList] = useState(["All genres"]);
+  const [currgenre, setcurrgenre] = useState("All genres");
   let handleSearch = (e) => {
     setsearch(e.target.value);
   };
 
-  let handleFilter=(genre)=>{
-    setcurrgenre(genre)
-  }
+  let handleFilter = (genre) => {
+    setcurrgenre(genre);
+  };
 
-let ShortIncresing = () => {
-  let sorted = [...watchlist].sort((a, b) => b.vote_average - a.vote_average);
-  setWatchlist(sorted);
-};
+  let ShortIncresing = () => {
+    let sorted = [...watchlist].sort((a, b) => b.vote_average - a.vote_average);
+    setWatchlist(sorted);
+  };
 
-let ShortDecresing = () => {
-  let sorted = [...watchlist].sort((a, b) => a.vote_average - b.vote_average);
-  setWatchlist(sorted);
-};
-  useEffect(()=>{
-  },[watchlist])
+  let ShortDecresing = () => {
+    let sorted = [...watchlist].sort((a, b) => a.vote_average - b.vote_average);
+    setWatchlist(sorted);
+  };
+  useEffect(() => {}, [watchlist]); 
 
- useEffect(() => {
-  let temp = watchlist.map((movieObj) => genreids[movieObj.genre_ids[0]]);
-  let uniqueGenres = ["All genres", ...new Set(temp)];
-  setgenreList(uniqueGenres);
-}, [watchlist]);
+  useEffect(() => {
+    let temp = watchlist.map((movieObj) => genreids[movieObj.genre_ids[0]]);
+    let uniqueGenres = ["All genres", ...new Set(temp)];
+    setgenreList(uniqueGenres);
+  }, [watchlist]);
   return (
     <>
-    <div className="flex justify-center flex-wrap m-4 gap-7">
-  {genreList.map((genre) => (
-    <div
-      key={genre}
-      onClick={() => handleFilter(genre)}
-      className={
-        currgenre === genre
-          ? "px-4 py-2 min-w-max flex items-center justify-center bg-blue-500 rounded-lg text-white font-bold text-sm cursor-pointer"
-          : "px-4 py-2 min-w-max flex items-center justify-center bg-gray-400 rounded-lg text-white font-bold text-sm cursor-pointer"
-      }
-    >
-      {genre}
-    </div>
-  ))}
-</div>
+      <div className="flex justify-center flex-wrap m-4 gap-7">
+        {genreList.map((genre) => (
+          <div
+            key={genre}
+            onClick={() => handleFilter(genre)}
+            className={
+              currgenre === genre
+                ? "px-4 py-2 min-w-max flex items-center justify-center bg-blue-500 rounded-lg text-white font-bold text-sm cursor-pointer"
+                : "px-4 py-2 min-w-max flex items-center justify-center bg-gray-400 rounded-lg text-white font-bold text-sm cursor-pointer"
+            }
+          >
+            {genre}
+          </div>
+        ))}
+      </div>
 
       <div className="flex justify-center my-4">
         <input
@@ -110,7 +109,14 @@ let ShortDecresing = () => {
             </tr>
           </thead>
           <tbody>
-            {watchlist
+            {watchlist.filter((movieObj)=>{
+              if(currgenre=='All genres'){
+                return true
+              }
+              else{
+                return genreids[movieObj.genre_ids[0]]==currgenre
+              }
+            })
               .filter((movieObj) => {
                 return movieObj.title
                   .toLowerCase()
@@ -136,9 +142,16 @@ let ShortDecresing = () => {
                     <td className="border-r-[1px] border-gray-100">
                       {movieObj.vote_average}
                     </td>
-                    <td className="border-r-[1px] border-gray-100">{genreids[movieObj.genre_ids[0]]}</td>
-                    <td onClick={()=>{handleRemovefromWatchlist(movieObj)}} className="font-red">
-                      <button className="text-red-400" >Delete</button>
+                    <td className="border-r-[1px] border-gray-100">
+                      {genreids[movieObj.genre_ids[0]]}
+                    </td>
+                    <td
+                      onClick={() => {
+                        handleRemovefromWatchlist(movieObj);
+                      }}
+                      className="font-red"
+                    >
+                      <button className="text-red-400">Delete</button>
                     </td>
                   </tr>
                 );

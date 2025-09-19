@@ -22,9 +22,8 @@ function App() {
     let filteredWatchlist = watchlist.filter((movie) => {
       return movie.id != movieObj.id;
     });
-
+localStorage.setItem('moviesApp',JSON.stringify(filteredWatchlist));
     setWatchlist(filteredWatchlist);
-    console.log(filteredWatchlist)
   };
 
   useEffect(()=>{
