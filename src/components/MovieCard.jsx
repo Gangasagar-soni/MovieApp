@@ -1,28 +1,26 @@
+import { useContext } from "react";
 import React from "react";
+import { ValuesContext } from "../Context/MainContext";
 
-function MovieCard({
-  movieObj,
-  poster_path,
-  name,
-  handleAddtoWatchlist,
-  handleRemovefromWatchlist,
-  watchlist,
-}) {
+function MovieCard({ movieObj, poster_path, name }) {
   function doesContain(movieObj) {
-    for (let i = 0; i<watchlist.length; i++){
+    for (let i = 0; i < watchlist.length; i++) {
       if (watchlist[i].id == movieObj.id) {
         return true;
       }
     }
     return false;
-    
   }
+  let Info = useContext(ValuesContext);
+  let watchlist = Info.watchlist;
+  let handleRemovefromWatchlist = Info.handleRemovefromWatchlist;
+  let handleAddtoWatchlist = Info.handleAddtoWatchlist;
   return (
-  <div
-  className="relative h-[40vh] w-[140px] bg-center bg-cover rounded-xl mb-4 hover:scale-110 duration-300 hover:cursor-pointer flex items-end"
-  style={{
-    backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
-  }}
+    <div
+      className="relative h-[40vh] w-[140px] bg-center bg-cover rounded-xl mb-4 hover:scale-110 duration-300 hover:cursor-pointer flex items-end"
+      style={{
+        backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
+      }}
     >
       {doesContain(movieObj) ? (
         <div

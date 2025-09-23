@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import genreids from "./Utility/Genre.js";
+import { ValuesContext } from "../Context/MainContext";
 
-function Watchlist({ watchlist, setWatchlist, handleRemovefromWatchlist }) {
+function Watchlist() {
   const [search, setsearch] = useState("");
   const [genreList, setgenreList] = useState(["All genres"]);
   const [currgenre, setcurrgenre] = useState("All genres");
@@ -13,6 +14,11 @@ function Watchlist({ watchlist, setWatchlist, handleRemovefromWatchlist }) {
     setcurrgenre(genre);
   };
 
+  let Info = useContext(ValuesContext);
+  let watchlist = Info.watchlist;
+  let handleRemovefromWatchlist = Info.handleRemovefromWatchlist;
+  let setWatchlist = Info.setWatchlist;
+
   let ShortIncresing = () => {
     let sorted = [...watchlist].sort((a, b) => b.vote_average - a.vote_average);
     setWatchlist(sorted);
@@ -22,7 +28,7 @@ function Watchlist({ watchlist, setWatchlist, handleRemovefromWatchlist }) {
     let sorted = [...watchlist].sort((a, b) => a.vote_average - b.vote_average);
     setWatchlist(sorted);
   };
-  useEffect(() => {}, [watchlist]); 
+  useEffect(() => {}, [watchlist]);
 
   useEffect(() => {
     let temp = watchlist.map((movieObj) => genreids[movieObj.genre_ids[0]]);
@@ -109,14 +115,14 @@ function Watchlist({ watchlist, setWatchlist, handleRemovefromWatchlist }) {
             </tr>
           </thead>
           <tbody>
-            {watchlist.filter((movieObj)=>{
-              if(currgenre=='All genres'){
-                return true
-              }
-              else{
-                return genreids[movieObj.genre_ids[0]]==currgenre
-              }
-            })
+            {watchlist
+              .filter((movieObj) => {
+                if (currgenre == "All genres") {
+                  return true;
+                } else {
+                  return genreids[movieObj.genre_ids[0]] == currgenre;
+                }
+              })
               .filter((movieObj) => {
                 return movieObj.title
                   .toLowerCase()
