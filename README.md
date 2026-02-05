@@ -1,12 +1,40 @@
-# React + Vite
+# 🎬 React Movie App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based movie application that allows users to browse, search, and view detailed information about movies using the TMDB public API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- Browse trending and popular movies  
+- Search movies by title  
+- View movie details (rating, overview, release date)  
+- Responsive user interface  
+- API-based dynamic data fetching  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠 Tech Stack
+
+- React  
+- JavaScript (ES6+)  
+- HTML5  
+- CSS3  
+- TMDB Movie API  
+
+---
+
+## 📸 Screenshots
+
+<img width="1600" height="900" alt="Screenshot (117)" src="https://github.com/user-attachments/assets/88f45070-de4c-42a9-a32d-02b68bc473d3" />
+<img width="1600" height="900" alt="Screenshot (118)" src="https://github.com/user-attachments/assets/d6f9ab6e-8ee0-47a9-8a6e-9d34c1683403" />
+<img width="1600" height="900" alt="Screenshot (119)" src="https://github.com/user-attachments/assets/0f7ed245-55dc-4fef-adf7-529185c9d7a9" />
+<img width="1600" height="900" alt="Screenshot (125)" src="https://github.com/user-attachments/assets/00123acf-2390-4f5a-8ee5-a6fec46ad5bf" />
+
+---
+
+## ⚙️ Clone & Run Locally
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Gangasagar-soni/MovieApp.git
