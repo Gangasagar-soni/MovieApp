@@ -72,7 +72,7 @@ function Watchlist() {
               <th className="flex flex-end border-r-[1px] border-gray-100 place-content-center">
                 <div className="pt-[7px]" onClick={ShortIncresing}>
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns="https://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     className="size-4 mr-1"
@@ -92,7 +92,7 @@ function Watchlist() {
                 <div className="p-1">Ratings</div>
                 <div className="pt-[7px] ml-1" onClick={ShortDecresing}>
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns="https://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     className="size-4"

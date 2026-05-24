@@ -29,7 +29,7 @@ function MovieCard({ movieObj, poster_path, name }) {
           }}
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            xmlns="https://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="red"
             className="size-6 absolute top-0 right-0 size-6"
@@ -48,7 +48,7 @@ function MovieCard({ movieObj, poster_path, name }) {
           }}
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            xmlns="https://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="white"
             className="absolute top-0 right-0 size-6"

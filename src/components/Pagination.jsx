@@ -4,7 +4,7 @@ function Pagination({ increasePage, decreasePage, page }) {
   return (
     <div className="bg-gray-400 flex justify-center">
       <svg
-        xmlns="http://www.w3.org/2000/svg"
+        xmlns="https://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
         fill="currentColor"
         className="size-4 absolute left-7"
@@ -20,7 +20,7 @@ function Pagination({ increasePage, decreasePage, page }) {
       <p className="text-[10px] font-bold text-center">{page}</p>
 
       <svg
-        xmlns="http://www.w3.org/2000/svg"
+        xmlns="https://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
         fill="currentColor"
         className="size-4 absolute right-7 "
