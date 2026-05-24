@@ -20,7 +20,12 @@ A React-based movie application that allows users to browse, search, and view de
 - JavaScript (ES6+)  
 - HTML5  
 - CSS3  
-- TMDB Movie API  
+- TMDB Movie API
+
+---
+
+# Live
+-live : https://holiwood-movie.netlify.app
 
 ---
 
