@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Baner from "./components/Baner";
-import Movie from "./components/movie";
+import Movie from "./components/Movie";
 import MovieCard from "./components/MovieCard";
 import Navbar from "./components/Navbar";
 import Watchlist from "./components/Watchlist";

@@ -2,7 +2,7 @@ import { useState } from "react";
 import React, { useEffect } from "react";
 import MovieCard from "./MovieCard";
 import axios from "axios";
-import Pagination from "./pagination";
+import Pagination from "./Pagination";
 
 function Movie() {
   const [page, setpage] = useState(1);
@@ -27,11 +27,9 @@ function Movie() {
   }
 
   return (
-    <div className="pt-2 p-5">
-      <div className="text-lg mb-3 font-bold text-center border-t-1">
-        Trending Movies
-      </div>
-      <div className="flex items-row flex-wrap justify-around">
+    <div className="pt-4 px-4 md:px-8">
+      <div className="text-lg mb-3 font-bold text-center">Trending Movies</div>
+      <div className="flex flex-wrap justify-center gap-4">
         {movies.map((movieObj) => {
           return (
             <MovieCard
